@@ -1,0 +1,17 @@
+<div class="m-5">
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <div class="form-group my-3">
+      <label for="exampleInputEmail1" >User name</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="username">
+    </div>
+    <div class="form-group my-3">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
+    </div>
+    <div class="form-group my-3">
+      <label for="exampleInputMobileNo1" >Mobile Number</label>
+      <input type="email" class="form-control" id="exampleInputMobileNo1" aria-describedby="emailHelp" placeholder="Enter Mobile number" formControlName="mobileNo">
+    </div>
+
+</form>
+</div>
