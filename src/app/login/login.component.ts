@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { User } from '../utils/user.model';
+import { Data } from '../utils/data.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,17 @@ import { User } from '../utils/user.model';
 })
 export class LoginComponent {
 
-  constructor(private userService : UserService){
+  constructor(private userService : UserService, private router : Router){
 
   }
 
   onSubmit(){
 
     // console.log(this.loginForm);
-    this.userService.loginUser(this.loginForm.value as User);
+    this.userService.loginUser(this.loginForm.value as Data);
+    this.userService.userData.subscribe((data)=> {
+      this.router.navigate(["list"]);
+    })
 
   }
   loginForm = new FormGroup(

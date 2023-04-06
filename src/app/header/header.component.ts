@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit{
 
   userId! : number;
 
-  constructor(private userService : UserService){
+  constructor(private userService : UserService, private router : Router){
 
   }
 
@@ -31,9 +32,7 @@ export class HeaderComponent implements OnInit{
       if(data===true){
         let user = localStorage.getItem("user");
         if(user!==null){
-          console.log(JSON.parse(user));
           this.userId = JSON.parse(user).id;
-          console.log(this.userId);
         }
       }
     },err=>{
@@ -42,8 +41,8 @@ export class HeaderComponent implements OnInit{
   }
 
   onLogout(){
-    localStorage.removeItem("user");
-    this.userService.hasUser.next(false);
+    this.userService.logout();
+    Swal.fire("Yikes!", "Logged out successfully", "success");
   }
 
 }

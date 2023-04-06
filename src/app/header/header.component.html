@@ -18,16 +18,7 @@
             <a class="nav-link active" aria-current="page" routerLink="login">Login</a>
           </li>
           <li class="nav-item mx-3" *ngIf="hasUser">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage User
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" style="cursor : pointer" [routerLink]="'users/'+userId" >My Profile</a>
-                <a class="dropdown-item" style="cursor : pointer">Update User</a>
-                <a class="dropdown-item" style="cursor : pointer">Delete User</a>
-              </div>
-            </div>
+              <button class="btn" [routerLink]="'users/'+userId">My Profile</button>
           </li>
           <li class="nav-item mx-3" *ngIf="hasUser">
             <a class="nav-link active" aria-current="page" clas="btn" style="cursor:pointer" (click)="onLogout()">Logout</a>

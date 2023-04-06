@@ -1,6 +1,7 @@
 export interface User{
-
-  data : Object | Array<Object>,
-  message : string,
-  statusCode : string
+  id? : number;
+  username? : string | null;
+  password? : string | null;
+  mobileNo? : string | null;
+  newPassword? : string | null;
 }

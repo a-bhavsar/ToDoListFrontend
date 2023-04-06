@@ -10,7 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {HttpClientModule} from "@angular/common/http";
-import { UserComponent } from './user/user.component'
+import { UserComponent } from './user/user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ListComponent } from './list/list.component';
+import { AddListComponent } from './add-list/add-list.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { UserComponent } from './user/user.component'
     RegisterComponent,
     HomeComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    UpdateUserComponent,
+    ListComponent,
+    AddListComponent
   ],
   imports: [
     BrowserModule,

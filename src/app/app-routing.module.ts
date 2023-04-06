@@ -5,6 +5,9 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ListComponent } from './list/list.component';
+import { AddListComponent } from './add-list/add-list.component';
 
 const routes: Routes = [
   {
@@ -18,6 +21,15 @@ const routes: Routes = [
   },
   {
     path : "users/:userId", component : UserComponent
+  },
+  {
+    path : "users/:userId/update", component : UpdateUserComponent
+  },
+  {
+    path : "list", component : ListComponent
+  },
+  {
+    path : "list/add", component : AddListComponent
   }
 ];
 

@@ -2,9 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../utils/user.model';
+import { Data } from '../utils/data.model';
 import { UserService } from '../services/user.service';
-import { repeat } from 'rxjs';
 
 
 @Component({
@@ -23,7 +22,7 @@ export class RegisterComponent implements OnInit{
   constructor(private router : Router, private http : HttpClient, private userService : UserService, private route : ActivatedRoute){
 
   }
-  tempData!:User[];
+  tempData!:Data[];
 
 
   registerForm = new FormGroup({
@@ -33,14 +32,13 @@ export class RegisterComponent implements OnInit{
   })
    onSubmit(){
     localStorage.clear();
-     this.userService.createUser(this.registerForm.value as User)
-    this.userService.userData.subscribe((response)=>{
+     this.userService.createUser(this.registerForm.value as Data)
+      this.userService.userData.subscribe((response)=>{
       let user = localStorage.getItem("user");
       if(user!==null){
         this.userId = JSON.parse(user).id;
       }
-      this.router.navigate(["../", "users", this.userId], {relativeTo : this.route});
-
+      this.router.navigate(["list"]);
     })
   }
 
