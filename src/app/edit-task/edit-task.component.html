@@ -1,5 +1,5 @@
 <div class="m-5">
-  <form (ngSubmit)="updateList()" [formGroup]="editList">
+  <form (ngSubmit)="updateTask()" [formGroup]="editTask">
     <div class="form-group my-3">
       <label for="exampleTitle1">Title</label>
       <input type="text" class="form-control" id="exampleTitle1" aria-describedby="titleHelp" placeholder="Enter title" formControlName="title">
@@ -15,6 +15,6 @@
       </div>
     </div>
     <button type="submit" class="btn btn-primary mx-3">Update</button>
-    <button type="button" class="btn btn-primary mx-3" (click)="backToList()">Back to Lists</button>
+    <button type="button" class="btn btn-primary mx-3" (click)="backToTask()">Back to Tasks</button>
   </form>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../utils/task.model';
 import { TaskService } from '../services/task.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-task',
@@ -33,6 +34,14 @@ export class TaskComponent implements OnInit{
   }
 
   deleteTask(task : Task){
-
+    this.taskService.deleteTask(this.userId, this.listId, (task.id as number)).subscribe((data)=> {
+      Swal.fire("Yikes!", data.message, "success");
+      this.taskService.getAllTasks(this.userId, this.listId).subscribe((data)=> {
+        this.tasks = (data.data as Task[]);
+      }
+    );
+    }, (err)=> {
+      Swal.fire("Oops!", err.error.message, "error");
+    });
   }
 }

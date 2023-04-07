@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { EditListComponent } from './edit-list/edit-list.component';
 import { TaskComponent } from './task/task.component';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AddTaskComponent } from './add-task/add-task.component';
     AddListComponent,
     EditListComponent,
     TaskComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

@@ -50,10 +50,6 @@ export class EditListComponent implements OnInit{
     })
   }
 
-  onSubmit(){
-
-  }
-
   backToList(){
     this.router.navigate(["../../"], {relativeTo : this.route });
   }

@@ -11,6 +11,7 @@ import { AddListComponent } from './add-list/add-list.component';
 import { EditListComponent } from './edit-list/edit-list.component';
 import { TaskComponent } from './task/task.component';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   {
     path : "list/:listId/task/add", component : AddTaskComponent
+  },
+  {
+    path : "list/:listId/task/:taskId/edit", component : EditTaskComponent
   }
 ];
 

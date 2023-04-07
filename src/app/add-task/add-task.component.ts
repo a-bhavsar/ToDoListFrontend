@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { TaskService } from '../services/task.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-task',
@@ -9,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddTaskComponent implements OnInit{
 
-  constructor(private router : Router, private route : ActivatedRoute){
+  constructor(private router : Router, private route : ActivatedRoute, private taskService : TaskService){
 
   }
 
@@ -18,12 +20,25 @@ export class AddTaskComponent implements OnInit{
     description : new FormControl("", Validators.required)
   })
 
-  ngOnInit(){
+  userId! : number;
+  listId! : number;
 
+  ngOnInit(){
+    let user = localStorage.getItem("user");
+    if(user!==null){
+      this.userId = JSON.parse(user).id;
+    }
+    this.listId = this.route.snapshot.params["listId"];
+    this.route.params.subscribe((params : Params) => {
+      this.listId = params["listId"];
+    })
   }
 
   onSubmit(){
-
+    this.taskService.createTask(this.userId, this.listId, this.addTaskForm.value).subscribe((data)=> {
+      Swal.fire("Yikes!", data.message, "success");
+      this.router.navigate(["../"], {relativeTo : this.route});
+    });
   }
 
   backToTask(){
