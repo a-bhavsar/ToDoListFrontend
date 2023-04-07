@@ -1,5 +1,5 @@
 <div class="accordion m-5" id="accordionExample" *ngIf="lists.length>0">
-  <div class="accordion-item" *ngFor="let list of lists; let i=index;">
+  <div class="accordion-item my-3" *ngFor="let list of lists; let i=index;">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne'+i" aria-expanded="true" aria-controls="collapseOne">
         {{list.title}}
@@ -9,10 +9,14 @@
       <div class="accordion-body">
         {{list.description}}
       </div>
-      <div class="d-flex justify-content-center align-items-center">
-        <button class="btn btn-primary m-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-primary m-3" [routerLink]="list.id+'/task'">
           Go To Tasks
         </button>
+        <div>
+          <mat-icon style="cursor : pointer;" class="mx-3" [routerLink]="list.id+'/edit'">edit</mat-icon>
+          <mat-icon style="cursor : pointer;" class="mx-3" (click)="deleteList(list)">delete</mat-icon>
+        </div>
       </div>
     </div>
 

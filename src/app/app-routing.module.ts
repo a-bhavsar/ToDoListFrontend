@@ -8,6 +8,9 @@ import { UserComponent } from './user/user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ListComponent } from './list/list.component';
 import { AddListComponent } from './add-list/add-list.component';
+import { EditListComponent } from './edit-list/edit-list.component';
+import { TaskComponent } from './task/task.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 const routes: Routes = [
   {
@@ -30,6 +33,15 @@ const routes: Routes = [
   },
   {
     path : "list/add", component : AddListComponent
+  },
+  {
+    path : "list/:listId/edit", component : EditListComponent
+  },
+  {
+    path : "list/:listId/task", component : TaskComponent
+  },
+  {
+    path : "list/:listId/task/add", component : AddTaskComponent
   }
 ];
 

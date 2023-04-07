@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ListService } from '../services/list.service';
 import { List } from '../utils/list.model';
+import {  Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { Data } from '../utils/data.model';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +17,8 @@ export class ListComponent implements OnInit{
   }
 
   userId! : number;
-  lists! : List[];
+  lists : List[] = [];
+  listId! : number;
 
   ngOnInit(){
     let user = localStorage.getItem("user");
@@ -23,7 +27,18 @@ export class ListComponent implements OnInit{
     }
     this.listService.getAllLists(this.userId).subscribe((data)=> {
       this.lists = data.data as List[];
-      console.log(this.lists);
+    });
+  }
+
+  deleteList(list : List){
+    this.listService.deleteList(this.userId, list.id as number).subscribe((data)=> {
+      Swal.fire("Yikes", data.message, "success");
+      this.listService.getAllLists(this.userId).subscribe((data)=> {
+        this.lists = data.data as List[];
+      })
+    },
+    (err)=> {
+      Swal.fire("Oops!", (err.error as Data).message, "error");
     });
   }
 }

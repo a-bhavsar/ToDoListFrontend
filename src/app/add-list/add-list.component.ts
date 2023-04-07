@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListService } from '../services/list.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-list',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddListComponent implements OnInit{
 
-  constructor(private listService : ListService, private router : Router){
+  constructor(private listService : ListService, private router : Router, private route : ActivatedRoute){
 
   }
 
@@ -42,6 +42,10 @@ export class AddListComponent implements OnInit{
       Swal.fire("Yikes!", data.message, "success");
       this.router.navigate(["list"]);
     });
+  }
+
+  backToList(){
+    this.router.navigate(["../"], {relativeTo : this.route });
   }
 
 }

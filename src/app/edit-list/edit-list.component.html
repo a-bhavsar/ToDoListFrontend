@@ -1,5 +1,5 @@
 <div class="m-5">
-  <form (ngSubmit)="onSubmit()" [formGroup]="addListForm">
+  <form (ngSubmit)="onSubmit()" [formGroup]="editList">
     <div class="form-group my-3">
       <label for="exampleTitle1">Title</label>
       <input type="text" class="form-control" id="exampleTitle1" aria-describedby="titleHelp" placeholder="Enter title" formControlName="title">
@@ -8,13 +8,13 @@
       </div>
     </div>
     <div class="form-group my-3">
-      <label for="exampleInputPassword1">Description</label>
+      <label for="exampleDescription1">Old Password</label>
       <input type="text" class="form-control" id="exampleDescription1" placeholder="Enter Description" formControlName="description">
       <div class="alert alert-danger" *ngIf="description?.invalid && description?.touched">
         Description cannot be empty
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary mx-3" (click)="updateList()">Update</button>
     <button type="button" class="btn btn-primary mx-3" (click)="backToList()">Back to Lists</button>
   </form>
 </div>

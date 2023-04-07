@@ -14,6 +14,11 @@ import { UserComponent } from './user/user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ListComponent } from './list/list.component';
 import { AddListComponent } from './add-list/add-list.component'
+import {MatIconModule} from '@angular/material/icon';
+import { EditListComponent } from './edit-list/edit-list.component';
+import { TaskComponent } from './task/task.component';
+import { AddTaskComponent } from './add-task/add-task.component';
+
 
 @NgModule({
   declarations: [
@@ -25,13 +30,17 @@ import { AddListComponent } from './add-list/add-list.component'
     UserComponent,
     UpdateUserComponent,
     ListComponent,
-    AddListComponent
+    AddListComponent,
+    EditListComponent,
+    TaskComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

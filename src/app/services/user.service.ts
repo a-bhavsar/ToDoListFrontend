@@ -59,7 +59,7 @@ export class UserService {
           Swal.fire("Yikes!", responseData.message, "success");
         }, (err)=> {
           const errorData = err as Data;
-          Swal.fire("Oops!", err.message, "error")
+          Swal.fire("Oops!", err.error.message, "error")
         })
       }
       else{
@@ -74,6 +74,8 @@ export class UserService {
   deleteUser(userId : number){
     this.http.delete<Data>(this.baseUrl+"/users/"+userId).subscribe((data)=> {
       Swal.fire("Yikes!", data.message, "success");
+    }, (err)=> {
+      Swal.fire("Oops!", err.message, "error");
     })
     this.logout();
   }
