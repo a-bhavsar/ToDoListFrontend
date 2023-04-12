@@ -12,16 +12,17 @@ import { EditListComponent } from './edit-list/edit-list.component';
 import { TaskComponent } from './task/task.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
+import { AuthGuard } from './utils/auth.guard';
 
 const routes: Routes = [
   {
-    path : "", component : HomeComponent
+    path : "", component : HomeComponent, canActivate : [AuthGuard]
   },
   {
-    path : "register", component : RegisterComponent
+    path : "register", component : RegisterComponent, canActivate : [AuthGuard]
   },
   {
-    path : "login", component : LoginComponent
+    path : "login", component : LoginComponent, canActivate : [AuthGuard]
   },
   {
     path : "users/:userId", component : UserComponent

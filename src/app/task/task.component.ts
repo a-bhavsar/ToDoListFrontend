@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../utils/task.model';
 import { TaskService } from '../services/task.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,7 +13,7 @@ export class TaskComponent implements OnInit{
 
   tasks : Task[] = [];
 
-  constructor(private taskService : TaskService, private route : ActivatedRoute){
+  constructor(private taskService : TaskService, private route : ActivatedRoute, private router : Router){
 
   }
   userId! : number;
@@ -43,5 +43,9 @@ export class TaskComponent implements OnInit{
     }, (err)=> {
       Swal.fire("Oops!", err.error.message, "error");
     });
+  }
+
+  backToLists(){
+    this.router.navigate(["../../"],{relativeTo : this.route});
   }
 }

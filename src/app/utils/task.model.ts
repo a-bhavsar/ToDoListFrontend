@@ -4,8 +4,8 @@ export interface Task{
   id? : number;
   title? : string | null;
   description? : string | null;
-  start_date? : Date;
-  end_date? : Date;
+  startDate? : string | null;
+  endDate? : string | null;
   status? : string;
   lists? : List[];
 }

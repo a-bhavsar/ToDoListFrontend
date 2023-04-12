@@ -41,6 +41,8 @@ export class AddListComponent implements OnInit{
     this.listService.createList(this.userId, this.addListForm.value).subscribe((data)=> {
       Swal.fire("Yikes!", data.message, "success");
       this.router.navigate(["list"]);
+    }, (err)=> {
+      Swal.fire("Oops!", err.error.message, "error");
     });
   }
 

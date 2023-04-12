@@ -17,7 +17,9 @@ export class AddTaskComponent implements OnInit{
 
   addTaskForm = new FormGroup({
     title : new FormControl("", Validators.required),
-    description : new FormControl("", Validators.required)
+    description : new FormControl("", Validators.required),
+    startDate : new FormControl("", Validators.required),
+    endDate : new FormControl("", Validators.required)
   })
 
   userId! : number;
@@ -35,9 +37,12 @@ export class AddTaskComponent implements OnInit{
   }
 
   onSubmit(){
+    console.log(this.addTaskForm.value);
     this.taskService.createTask(this.userId, this.listId, this.addTaskForm.value).subscribe((data)=> {
       Swal.fire("Yikes!", data.message, "success");
       this.router.navigate(["../"], {relativeTo : this.route});
+    }, (err)=> {
+      Swal.fire("Oops!", err.error.message, "error");
     });
   }
 
